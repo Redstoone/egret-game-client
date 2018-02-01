@@ -45,6 +45,10 @@ class LoadingUI extends egret.Sprite implements RES.PromiseTaskReporter {
         this.textField.textAlign = "center";
     }
 
+    public setLoadingText(str: string) {
+        this.textField.text = str;
+    }
+
     public onProgress(current: number, total: number): void {
         this.textField.text = `Loading...${current}/${total}`;
     }

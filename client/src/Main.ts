@@ -28,88 +28,143 @@
 //////////////////////////////////////////////////////////////////////////////////////
 
 class Main extends eui.UILayer {
-    public net: Network;
+	public net: Network;
 
-    protected createChildren(): void {
-        super.createChildren();
+	private static instance: Main;
+	private loadingView: LoadingUI;
+	private alertView: Alert = null;
 
-        egret.lifecycle.addLifecycleListener((context) => {
-            // custom lifecycle plugin
-        })
+	public static getInstance() {
+		return Main.instance;
+	}
 
-        egret.lifecycle.onPause = () => {
-            egret.ticker.pause();
-        }
+	public constructor() {
+		super();
+		Main.instance = this;
+	}
 
-        egret.lifecycle.onResume = () => {
-            egret.ticker.resume();
-        }
+	protected createChildren(): void {
+		super.createChildren();
 
-        //inject the custom material parser
-        //注入自定义的素材解析器
-        let assetAdapter = new AssetAdapter();
-        egret.registerImplementation("eui.IAssetAdapter", assetAdapter);
-        egret.registerImplementation("eui.IThemeAdapter", new ThemeAdapter());
+		egret.lifecycle.addLifecycleListener((context) => {
+			// custom lifecycle plugin
+		})
+
+		egret.lifecycle.onPause = () => {
+			egret.ticker.pause();
+		}
+
+		egret.lifecycle.onResume = () => {
+			egret.ticker.resume();
+		}
+
+		//Config loading process interface
+		//设置加载进度界面
+		this.loadingView = new LoadingUI();
+		this.addChild(this.loadingView);
+
+		//inject the custom material parser
+		//注入自定义的素材解析器
+		let assetAdapter = new AssetAdapter();
+		egret.registerImplementation("eui.IAssetAdapter", assetAdapter);
+		egret.registerImplementation("eui.IThemeAdapter", new ThemeAdapter());
 
 
-        this.runGame().catch(e => {
-            console.log(e);
-        })
-    }
+		this.runGame().catch(e => {
+			console.log(e);
+		})
+	}
 
-    private async runGame() {
-        await this.loadResource()
-        this.createGameScene();
-        await platform.login();
-        const userInfo = await platform.getUserInfo();
-        console.log(userInfo);
+	private async runGame() {
+		await this.loadResource()
+		// this.createGameScene();
+		await platform.login();
+		const userInfo = await platform.getUserInfo();
+		console.log(userInfo);
 
-    }
+	}
 
-    private async loadResource() {
-        try {
-            const loadingView = new LoadingUI();
-            this.stage.addChild(loadingView);
-            await RES.loadConfig("resource/default.res.json", "resource/");
-            await this.loadTheme();
-            await RES.loadGroup("preload", 0, loadingView);
-            this.stage.removeChild(loadingView);
-        }
-        catch (e) {
-            console.error(e);
-        }
-    }
+	private async loadResource() {
+		try {
+			const loadingView = new LoadingUI();
+			this.stage.addChild(loadingView);
+			await RES.loadConfig("resource/default.res.json", "resource/");
+			await this.loadTheme();
+			await RES.loadGroup("preload", 0, loadingView);
+			this.stage.removeChild(loadingView);
+		}
+		catch (e) {
+			console.error(e);
+		}
+	}
 
-    private loadTheme() {
-        return new Promise((resolve, reject) => {
-            // load skin theme configuration file, you can manually modify the file. And replace the default skin.
-            //加载皮肤主题配置文件,可以手动修改这个文件。替换默认皮肤。
-            let theme = new eui.Theme("resource/default.thm.json", this.stage);
-            theme.addEventListener(eui.UIEvent.COMPLETE, () => {
-                resolve();
-            }, this);
+	private loadTheme() {
+		return new Promise((resolve, reject) => {
+			// load skin theme configuration file, you can manually modify the file. And replace the default skin.
+			//加载皮肤主题配置文件,可以手动修改这个文件。替换默认皮肤。
+			let theme = new eui.Theme("resource/default.thm.json", this.stage);
+			theme.addEventListener(eui.UIEvent.COMPLETE, this.onThemeLoadComplete, this);
+		})
+	}
 
-        })
-    }
-
-    private textfield: egret.TextField;
-    /**
-     * 创建场景界面
-     * Create scene interface
+	/**
+     * 主题文件加载完成,开始预加载
+     * Loading of theme configuration file is complete, start to pre-load the 
      */
-    protected createGameScene(): void {
-        //init network
-        this.net = new Network('http://localhost', 3101);
-        this.net.send('Room', '30215', { msg: "hello egret" })
-    }
-    /**
-     * 根据name关键字创建一个Bitmap对象。name属性请参考resources/resource.json配置文件的内容。
-     * Create a Bitmap object according to name keyword.As for the property of name please refer to the configuration file of resources/resource.json.
-     */
-    private createBitmapByName(name: string): egret.Bitmap {
-        let result = new egret.Bitmap();
-        let texture: egret.Texture = RES.getRes(name);
-        result.texture = texture;
-        return result;
-    }
+	private onThemeLoadComplete(): void {
+		//初始化alert
+		this.alertView = new Alert();
+		this.alertView.horizontalCenter = 0;
+		this.alertView.verticalCenter = 0;
+
+		Alert.show("正在加载资源", false)
+
+		//加载资源
+		this.loadingView.setLoadingText("正在加载资源");
+		// this.loadRes("preload");
+		this.initGame()
+	}
+
+	private textfield: egret.TextField;
+	/**
+	 * 创建场景界面
+	 * Create scene interface
+	 */
+	protected initGame(): void {
+		console.log('init')
+		//init network
+		this.net = new Network('http://localhost', 3101);
+		this.net.send('Room', '30215', { msg: "hello egret" })
+
+		this.net.setConnectHandler(this.onServerConnected, this);
+		this.net.setCloseHandler(this.onServerClosed, this);
+	}
+
+	private onServerConnected() {
+		this.net.bind("Index.login", this.onLogin, this);
+		this.net.bind("Error", this.onError, this);
+
+		//发送登录
+		// this.loadingView.setLoadingText("正在登录");
+	}
+
+	private onServerClosed() {
+		if (this.net.isConnected()) {
+			Alert.show("与服务器断开连接", false, () => {
+				// window.location.reload();
+			}, this);
+		} else {
+			Alert.show("无法连接服务器", false);
+		}
+	}
+
+	private onError(errstr: any) {
+		Alert.show(errstr);
+	}
+
+	private onLogin(data: any) {
+
+		// this.createGame();
+	}
+
 }

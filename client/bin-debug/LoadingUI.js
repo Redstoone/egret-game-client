@@ -51,6 +51,9 @@ var LoadingUI = (function (_super) {
         this.textField.height = 100;
         this.textField.textAlign = "center";
     };
+    LoadingUI.prototype.setLoadingText = function (str) {
+        this.textField.text = str;
+    };
     LoadingUI.prototype.onProgress = function (current, total) {
         this.textField.text = "Loading..." + current + "/" + total;
     };
