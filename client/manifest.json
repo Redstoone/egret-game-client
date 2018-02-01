@@ -11,12 +11,14 @@
 	],
 	"game": [
 		"bin-debug/utils/BaseComponent.js",
-		"bin-debug/AssetAdapter.js",
-		"bin-debug/LoadingUI.js",
+		"bin-debug/panel/Alert.js",
 		"bin-debug/Main.js",
 		"bin-debug/Platform.js",
 		"bin-debug/ThemeAdapter.js",
-		"bin-debug/panel/Alert.js",
+		"bin-debug/LoadingUI.js",
+		"bin-debug/scene/Index.js",
+		"bin-debug/scene/Login.js",
+		"bin-debug/AssetAdapter.js",
 		"bin-debug/utils/Network.js",
 		"bin-debug/utils/Utils.js"
 	]
