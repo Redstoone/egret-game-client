@@ -83,9 +83,6 @@ class Network {
 	}
 
 	private onSocketConnect(): void {
-		console.log("socket.io connected");
-		console.log(Alert)
-		Alert.show("socket.io connected", false)
 		if (Network.instance.cbConnect.length > 0) {
 			var obj: Object = Network.instance.cbConnect[0];
 			var func: Function = Network.instance.cbConnect[1];

@@ -59,7 +59,6 @@ var Alert = (function (_super) {
             text = Alert.texts[text];
         }
         var inst = Alert.instance;
-        console.log(inst);
         inst.labText.text = text;
         inst.func = func;
         inst.cfunc = cancelFunc;
@@ -74,6 +73,9 @@ var Alert = (function (_super) {
             inst.btnCancel.visible = false;
         }
         Main.getInstance().addChild(inst);
+    };
+    Alert.prototype.removeAll = function () {
+        this.parent.removeChild(this);
     };
     Alert.texts = {
         "InvalidToken": "登录验证失败",

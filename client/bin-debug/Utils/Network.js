@@ -70,9 +70,6 @@ var Network = (function () {
         this.handler[name] = [obj, func];
     };
     Network.prototype.onSocketConnect = function () {
-        console.log("socket.io connected");
-        console.log(Alert);
-        Alert.show("socket.io connected", false);
         if (Network.instance.cbConnect.length > 0) {
             var obj = Network.instance.cbConnect[0];
             var func = Network.instance.cbConnect[1];

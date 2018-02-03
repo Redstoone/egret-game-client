@@ -76,7 +76,6 @@ class Alert extends BaseComponent {
 		}
 
 		var inst = Alert.instance;
-		console.log(inst)
 		inst.labText.text = text;
 		inst.func = func;
 		inst.cfunc = cancelFunc;
@@ -91,5 +90,9 @@ class Alert extends BaseComponent {
 		}
 
 		Main.getInstance().addChild(inst);
+	}
+
+	public removeAll() {
+		this.parent.removeChild(this);
 	}
 }

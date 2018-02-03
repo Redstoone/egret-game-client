@@ -2,7 +2,8 @@
 	"skins": {},
 	"autoGenerateExmlsList": true,
 	"exmls": [
-		"resource/eui_skins/component/AlertSkin.exml"
+		"resource/eui_skins/component/AlertSkin.exml",
+		"resource/eui_skins/scene/LoginSkin.exml"
 	],
 	"path": "resource/default.thm.json"
 }

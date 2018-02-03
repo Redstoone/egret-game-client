@@ -95,8 +95,8 @@ var Main = (function (_super) {
         };
         //Config loading process interface
         //设置加载进度界面
-        this.loadingView = new LoadingUI();
-        this.addChild(this.loadingView);
+        // this.loadingView = new LoadingUI();
+        // this.addChild(this.loadingView);
         //inject the custom material parser
         //注入自定义的素材解析器
         var assetAdapter = new AssetAdapter();
@@ -177,9 +177,9 @@ var Main = (function (_super) {
         this.alertView = new Alert();
         this.alertView.horizontalCenter = 0;
         this.alertView.verticalCenter = 0;
-        Alert.show("正在加载资源", false);
+        // Alert.show("正在加载资源", false)
         //加载资源
-        this.loadingView.setLoadingText("正在加载资源");
+        // this.loadingView.setLoadingText("正在加载资源");
         // this.loadRes("preload");
         this.initGame();
     };
@@ -202,6 +202,7 @@ var Main = (function (_super) {
         // this.loadingView.setLoadingText("正在登录");
     };
     Main.prototype.onServerClosed = function () {
+        console.log(this.net.isConnected());
         if (this.net.isConnected()) {
             Alert.show("与服务器断开连接", false, function () {
                 // window.location.reload();

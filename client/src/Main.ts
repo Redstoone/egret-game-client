@@ -60,8 +60,8 @@ class Main extends eui.UILayer {
 
 		//Config loading process interface
 		//设置加载进度界面
-		this.loadingView = new LoadingUI();
-		this.addChild(this.loadingView);
+		// this.loadingView = new LoadingUI();
+		// this.addChild(this.loadingView);
 
 		//inject the custom material parser
 		//注入自定义的素材解析器
@@ -117,10 +117,10 @@ class Main extends eui.UILayer {
 		this.alertView.horizontalCenter = 0;
 		this.alertView.verticalCenter = 0;
 
-		Alert.show("正在加载资源", false)
+		// Alert.show("正在加载资源", false)
 
 		//加载资源
-		this.loadingView.setLoadingText("正在加载资源");
+		// this.loadingView.setLoadingText("正在加载资源");
 		// this.loadRes("preload");
 		this.initGame()
 	}
@@ -149,6 +149,7 @@ class Main extends eui.UILayer {
 	}
 
 	private onServerClosed() {
+		console.log(this.net.isConnected())
 		if (this.net.isConnected()) {
 			Alert.show("与服务器断开连接", false, () => {
 				// window.location.reload();
