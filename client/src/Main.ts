@@ -33,6 +33,7 @@ class Main extends eui.UILayer {
 	private static instance: Main;
 	private loadingView: LoadingUI;
 	private alertView: Alert = null;
+	private rankingView: Ranking = null;
 
 	public static getInstance() {
 		return Main.instance;
@@ -117,6 +118,10 @@ class Main extends eui.UILayer {
 		this.alertView.horizontalCenter = 0;
 		this.alertView.verticalCenter = 0;
 
+		this.rankingView = new Ranking();
+		// this.rankingView.horizontalCenter = 0;
+		// this.rankingView.verticalCenter = 0;
+
 		// Alert.show("正在加载资源", false)
 
 		//加载资源
@@ -132,6 +137,8 @@ class Main extends eui.UILayer {
 	 */
 	protected initGame(): void {
 		console.log('init')
+		Ranking.show();
+
 		//init network
 		this.net = new Network('http://localhost', 3101);
 		this.net.send('Room', '30215', { msg: "hello egret" })

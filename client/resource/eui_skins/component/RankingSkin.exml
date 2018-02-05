@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="RankingSkin" width="397" height="511" xmlns:e="http://ns.egret.com/eui">
+  <e:Image height="100%" width="100%" x="0" y="0" source="ranking_bg_png" />
+  <e:Group width="397" height="511" x="0" y="0">
+    <e:Image height="59" width="367" x="15" y="13" source="ranking_nav_bar_png" />
+    <e:Image id="tabActive" height="64" width="202" x="15" y="13" source="ranking_btn_active_png" />
+
+    <e:Button id="btnTab1" y="13" width="183.5" height="59" x="15"></e:Button>
+    <e:Button id="btnTab2" y="13" width="183.5" height="59" x="198.5"></e:Button>
+
+    <e:Group  y="13" width="183.5" height="59" x="15">
+      <e:Image id="tabDouActive"  width="202" height="64" source="ranking_dou_active_png" />
+      <e:Image id="tabDou"  width="202" height="64" source="ranking_dou_png" />
+    </e:Group>
+    <e:Group  y="13" width="183.5" height="59" x="198.5">
+      <e:Image id="tabPingActive"  width="202" height="64" source="ranking_ping_active_png" />
+      <e:Image id="tabPing"  width="202" height="64" source="ranking_ping_png" />
+    </e:Group>
+    
+    <e:Group id="tabCont1" height="400" width="345" x="15" y="73">
+      <e:Label text="tabCont1" x="165" y="255" />
+    </e:Group>
+    <e:Group id="tabCont2" height="400" width="345" x="15" y="73">
+      <e:Label text="tabCont2" x="165" y="255" />
+    </e:Group>
+  </e:Group>
+</e:Skin>

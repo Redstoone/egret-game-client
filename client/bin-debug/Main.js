@@ -76,6 +76,7 @@ var Main = (function (_super) {
     function Main() {
         var _this = _super.call(this) || this;
         _this.alertView = null;
+        _this.rankingView = null;
         Main.instance = _this;
         return _this;
     }
@@ -177,6 +178,9 @@ var Main = (function (_super) {
         this.alertView = new Alert();
         this.alertView.horizontalCenter = 0;
         this.alertView.verticalCenter = 0;
+        this.rankingView = new Ranking();
+        // this.rankingView.horizontalCenter = 0;
+        // this.rankingView.verticalCenter = 0;
         // Alert.show("正在加载资源", false)
         //加载资源
         // this.loadingView.setLoadingText("正在加载资源");
@@ -189,6 +193,7 @@ var Main = (function (_super) {
      */
     Main.prototype.initGame = function () {
         console.log('init');
+        Ranking.show();
         //init network
         this.net = new Network('http://localhost', 3101);
         this.net.send('Room', '30215', { msg: "hello egret" });

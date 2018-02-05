@@ -3,6 +3,7 @@
  * @author redstoone
  *
  */
+
 class Alert extends BaseComponent {
 	private static instance: Alert;
 	private static texts: Object = {
