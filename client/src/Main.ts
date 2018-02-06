@@ -34,6 +34,7 @@ class Main extends eui.UILayer {
 	private loadingView: LoadingUI;
 	private alertView: Alert = null;
 	private rankingView: Ranking = null;
+	private indexView: IndexSecne = null;
 
 	public static getInstance() {
 		return Main.instance;
@@ -118,9 +119,6 @@ class Main extends eui.UILayer {
 		this.alertView.horizontalCenter = 0;
 		this.alertView.verticalCenter = 0;
 
-		this.rankingView = new Ranking();
-		// this.rankingView.horizontalCenter = 0;
-		// this.rankingView.verticalCenter = 0;
 
 		// Alert.show("正在加载资源", false)
 
@@ -136,15 +134,16 @@ class Main extends eui.UILayer {
 	 * Create scene interface
 	 */
 	protected initGame(): void {
-		console.log('init')
-		Ranking.show();
-
+		console.log('init secne')
+		this.indexView = new IndexSecne();
+		this.rankingView = new Ranking();
 		//init network
-		// this.net = new Network('http://localhost', 3101);
-		// this.net.send('Room', '30215', { msg: "hello egret" })
+		// this.net = new Network('http://192.168.31.160:9090/msg1', 'token=1234b&fot=111');
+		this.net = new Network('http://192.168.31.110:3101/msg1', 'token=1234b&fot=111');
+		this.net.send('Room', '30215', { msg: "hello egret" })
 
-		// this.net.setConnectHandler(this.onServerConnected, this);
-		// this.net.setCloseHandler(this.onServerClosed, this);
+		this.net.setConnectHandler(this.onServerConnected, this);
+		this.net.setCloseHandler(this.onServerClosed, this);
 	}
 
 	private onServerConnected() {

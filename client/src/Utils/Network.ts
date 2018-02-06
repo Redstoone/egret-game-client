@@ -8,15 +8,15 @@ class Network {
 	private static instance: Network;
 	private socket;
 	private state: number;
-	private host: string;
-	private port: number;
+	private path: string;
+	private queryStr: string;
 	private handler: Object = {};
 	private cbConnect: Array<any> = [];
 	private cbClose: Array<any> = [];
 	private cbError: Array<any> = [];
 	private alertView: Alert = null;
 
-	public constructor(_host: string, _port: number = 80) {
+	public constructor(_path: string, _queryStr: string) {
 		Network.instance = this
 
 		//初始化alert
@@ -24,7 +24,7 @@ class Network {
 		this.alertView.horizontalCenter = 0;
 		this.alertView.verticalCenter = 0;
 
-		this.connect(_host, _port)
+		this.connect(_path, _queryStr)
 
 		//添加链接打开侦听，连接成功会调用此方法
 		this.socket.on('connect', this.onSocketConnect);
@@ -57,11 +57,17 @@ class Network {
 		this.cbError = [_obj, _func];
 	}
 
-	public connect(_host: string, _port: number) {
+	public connect(_path: string, _queryStr: string) {
 		this.state = 0;
-		this.host = _host;
-		this.port = _port;
-		this.socket = io.connect(_host + ":" + _port);
+		this.path = _path;
+		this.queryStr = _queryStr;
+		if (_queryStr) {
+			this.socket = io.connect(_path, {query: _queryStr});
+	} else {
+			this.socket = io.connect(_path);
+	}
+		// console.log(_host + ":" + _port + '', {query: 'token=1234b'})
+		// this.socket = io.connect('http://192.168.31.160:9090/msg1/?token=1234b');
 	}
 
 	public isConnected() {

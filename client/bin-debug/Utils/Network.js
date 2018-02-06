@@ -8,8 +8,7 @@ var __reflect = (this && this.__reflect) || function (p, c, t) {
  */
 var _this = null;
 var Network = (function () {
-    function Network(_host, _port) {
-        if (_port === void 0) { _port = 80; }
+    function Network(_path, _queryStr) {
         var _this = this;
         this.handler = {};
         this.cbConnect = [];
@@ -21,7 +20,7 @@ var Network = (function () {
         this.alertView = new Alert();
         this.alertView.horizontalCenter = 0;
         this.alertView.verticalCenter = 0;
-        this.connect(_host, _port);
+        this.connect(_path, _queryStr);
         //添加链接打开侦听，连接成功会调用此方法
         this.socket.on('connect', this.onSocketConnect);
         this.socket.on('connect_failed', this.onSocketConnectFailed);
@@ -48,11 +47,18 @@ var Network = (function () {
     Network.prototype.setErrorHandler = function (_func, _obj) {
         this.cbError = [_obj, _func];
     };
-    Network.prototype.connect = function (_host, _port) {
+    Network.prototype.connect = function (_path, _queryStr) {
         this.state = 0;
-        this.host = _host;
-        this.port = _port;
-        this.socket = io.connect(_host + ":" + _port);
+        this.path = _path;
+        this.queryStr = _queryStr;
+        if (_queryStr) {
+            this.socket = io.connect(_path, { query: _queryStr });
+        }
+        else {
+            this.socket = io.connect(_path);
+        }
+        // console.log(_host + ":" + _port + '', {query: 'token=1234b'})
+        // this.socket = io.connect('http://192.168.31.160:9090/msg1/?token=1234b');
     };
     Network.prototype.isConnected = function () {
         return this.state == 1;

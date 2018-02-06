@@ -32,7 +32,7 @@
     -->
     <e:Group height="100%" width="100%">
       <e:Scroller left="1" right="1" top="1" bottom="1" width="100%">
-        <e:List id="list" anchorOffsetX="0" width="100%" anchorOffsetY="0" height="100%">
+        <e:List anchorOffsetX="0" width="100%" anchorOffsetY="0" height="100%">
           <e:itemRendererSkinName>
             <e:Skin states="up,down,disabled" height="106">
               <e:Image width="345" height="100" y="5" source="ranking_item_bg_png" />
@@ -40,28 +40,37 @@
               <e:Label size="20" fontFamily="YouYuan" text="{data.name}" left="102" verticalCenter="0" />
               <e:Label size="20" fontFamily="YouYuan" text="{data.avatar}" left="102" verticalCenter="0" />
               <e:Label size="20" fontFamily="YouYuan" text="{data.wins}" left="102" verticalCenter="0" />
-              <!--<e:Label size="20" fontFamily="YouYuan" text="{data.国家或地区}" textColor="0x000000" left="245"
-                       verticalCenter="0" />-->
-              <!--<e:Label size="20" fontFamily="YouYuan" text="{data.体重}" textColor="0x000000" left="385"
-                       verticalCenter="0" />
-              <e:Label size="20" fontFamily="YouYuan" text="{data.吞噬}" textColor="0x000000" left="495"
-                       verticalCenter="0" />
-              <e:Label size="20" fontFamily="YouYuan" text="{data.彩豆}" textColor="0x000000" left="590"
-                       verticalCenter="0" />-->
             </e:Skin>
           </e:itemRendererSkinName>
-          <e:ArrayCollection id="allList">
+          <e:ArrayCollection>
             <e:Array>
               <e:Object ranking="1" name="待定" avatar="未知地区" wins="0kg"/>
               <e:Object ranking="2" name="待定" avatar="未知地区" wins="0kg"/>
               <e:Object ranking="3" name="待定" avatar="未知地区" wins="0kg"/>
               <e:Object ranking="4" name="待定" avatar="未知地区" wins="0kg"/>
-              <e:Object ranking="5" name="待定" avatar="未知地区" wins="0kg"/>
-              <e:Object ranking="6" name="待定" avatar="未知地区" wins="0kg"/>
-              <e:Object ranking="7" name="待定" avatar="未知地区" wins="0kg"/>
-              <e:Object ranking="8" name="待定" avatar="未知地区" wins="0kg"/>
-              <e:Object ranking="9" name="待定" avatar="未知地区" wins="0kg"/>
-              <e:Object ranking="10" name="待定" avatar="未知地区" wins="0kg"/>
+            </e:Array>
+          </e:ArrayCollection>
+        </e:List>
+      </e:Scroller>
+    </e:Group>
+    <e:Group height="100%" width="100%">
+      <e:Scroller left="1" right="1" top="1" bottom="1" width="100%">
+        <e:List anchorOffsetX="0" width="100%" anchorOffsetY="0" height="100%">
+          <e:itemRendererSkinName>
+            <e:Skin states="up,down,disabled" height="106">
+              <e:Image width="345" height="100" y="5" source="ranking_item_bg_png" />
+              <e:Label size="20" fontFamily="YouYuan" text="{data.ranking}" left="20" verticalCenter="0" />
+              <e:Label size="20" fontFamily="YouYuan" text="{data.name}" left="102" verticalCenter="0" />
+              <e:Label size="20" fontFamily="YouYuan" text="{data.avatar}" left="102" verticalCenter="0" />
+              <e:Label size="20" fontFamily="YouYuan" text="{data.wins}" left="102" verticalCenter="0" />
+            </e:Skin>
+          </e:itemRendererSkinName>
+          <e:ArrayCollection>
+            <e:Array>
+              <e:Object ranking="1" name="待定" avatar="未知地区" wins="0kg"/>
+              <!--<e:Object ranking="2" name="待定" avatar="未知地区" wins="0kg"/>
+              <e:Object ranking="3" name="待定" avatar="未知地区" wins="0kg"/>
+              <e:Object ranking="4" name="待定" avatar="未知地区" wins="0kg"/>-->
             </e:Array>
           </e:ArrayCollection>
         </e:List>

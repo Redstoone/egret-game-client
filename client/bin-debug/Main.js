@@ -77,6 +77,7 @@ var Main = (function (_super) {
         var _this = _super.call(this) || this;
         _this.alertView = null;
         _this.rankingView = null;
+        _this.indexView = null;
         Main.instance = _this;
         return _this;
     }
@@ -178,9 +179,6 @@ var Main = (function (_super) {
         this.alertView = new Alert();
         this.alertView.horizontalCenter = 0;
         this.alertView.verticalCenter = 0;
-        this.rankingView = new Ranking();
-        // this.rankingView.horizontalCenter = 0;
-        // this.rankingView.verticalCenter = 0;
         // Alert.show("正在加载资源", false)
         //加载资源
         // this.loadingView.setLoadingText("正在加载资源");
@@ -192,13 +190,15 @@ var Main = (function (_super) {
      * Create scene interface
      */
     Main.prototype.initGame = function () {
-        console.log('init');
-        Ranking.show();
+        console.log('init secne');
+        this.indexView = new IndexSecne();
+        this.rankingView = new Ranking();
         //init network
-        // this.net = new Network('http://localhost', 3101);
-        // this.net.send('Room', '30215', { msg: "hello egret" })
-        // this.net.setConnectHandler(this.onServerConnected, this);
-        // this.net.setCloseHandler(this.onServerClosed, this);
+        // this.net = new Network('http://192.168.31.160:9090/msg1', 'token=1234b&fot=111');
+        this.net = new Network('http://192.168.31.110:3101/msg1', 'token=1234b&fot=111');
+        this.net.send('Room', '30215', { msg: "hello egret" });
+        this.net.setConnectHandler(this.onServerConnected, this);
+        this.net.setCloseHandler(this.onServerClosed, this);
     };
     Main.prototype.onServerConnected = function () {
         this.net.bind("Index.login", this.onLogin, this);

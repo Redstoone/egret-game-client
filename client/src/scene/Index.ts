@@ -1,4 +1,0 @@
-class Index {
-	public constructor() {
-	}
-}

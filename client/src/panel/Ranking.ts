@@ -15,6 +15,11 @@ class Ranking extends BaseComponent {
 		super();
 		Ranking.instance = this;
 		this.load("component/RankingSkin.exml");
+
+		var inst = Ranking.instance;
+		inst.x = 38;
+		inst.y = 118;
+		Main.getInstance().addChild(inst);
 	}
 
 	protected initComponent() {
@@ -29,10 +34,5 @@ class Ranking extends BaseComponent {
 		tw.to({ x: this.currIndex * 170.5 + 13 }, 200);
 
 		this.viewStack.selectedIndex = this.currIndex;
-	}
-
-	public static show() {
-		var inst = Ranking.instance;
-		Main.getInstance().addChild(inst);
 	}
 }
