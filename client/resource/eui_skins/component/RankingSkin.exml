@@ -4,7 +4,6 @@
   <e:Group width="397" height="511" x="0" y="0">
     <e:Image height="59" width="367" x="15" y="13" source="ranking_nav_bar_png" />
     <e:Image id="tabActive" height="64" width="202" x="15" y="13" source="ranking_btn_active_png" />
-
     <e:Group>
       <e:RadioButton id="radioBtn" label="" y="13" width="183.5" height="59" x="15" value="0" selected="true">
         <e:skinName>
@@ -23,14 +22,51 @@
         </e:skinName>
       </e:RadioButton>
     </e:Group>
-    
-    <e:ViewStack id="viewStack" height="400" width="345" x="15" y="73">
-      <e:Group id="tabCont1" height="100%" width="100%">
-        <e:Label text="tabCont1" x="165" y="255" />
-      </e:Group>
-      <e:Group id="tabCont2" height="100%" width="100%">
-        <e:Label text="tabCont2" x="165" y="255" />
-      </e:Group>
-    </e:ViewStack>
-  </e:Group>
+    <e:ViewStack id="viewStack" height="397" width="358" x="25" y="80">
+      <!--<e:Group id="tabCont1" height="100%" width="100%">
+      <e:Label text="tabCont1" x="0" y="0" />
+    </e:Group>
+    <e:Group id="tabCont2" height="100%" width="100%">
+      <e:Label text="tabCont2" x="0" y="0" />
+    </e:Group>
+    -->
+    <e:Group height="100%" width="100%">
+      <e:Scroller left="1" right="1" top="1" bottom="1" width="100%">
+        <e:List id="list" anchorOffsetX="0" width="100%" anchorOffsetY="0" height="100%">
+          <e:itemRendererSkinName>
+            <e:Skin states="up,down,disabled" height="106">
+              <e:Image width="345" height="100" y="5" source="ranking_item_bg_png" />
+              <e:Label size="20" fontFamily="YouYuan" text="{data.ranking}" left="20" verticalCenter="0" />
+              <e:Label size="20" fontFamily="YouYuan" text="{data.name}" left="102" verticalCenter="0" />
+              <e:Label size="20" fontFamily="YouYuan" text="{data.avatar}" left="102" verticalCenter="0" />
+              <e:Label size="20" fontFamily="YouYuan" text="{data.wins}" left="102" verticalCenter="0" />
+              <!--<e:Label size="20" fontFamily="YouYuan" text="{data.国家或地区}" textColor="0x000000" left="245"
+                       verticalCenter="0" />-->
+              <!--<e:Label size="20" fontFamily="YouYuan" text="{data.体重}" textColor="0x000000" left="385"
+                       verticalCenter="0" />
+              <e:Label size="20" fontFamily="YouYuan" text="{data.吞噬}" textColor="0x000000" left="495"
+                       verticalCenter="0" />
+              <e:Label size="20" fontFamily="YouYuan" text="{data.彩豆}" textColor="0x000000" left="590"
+                       verticalCenter="0" />-->
+            </e:Skin>
+          </e:itemRendererSkinName>
+          <e:ArrayCollection id="allList">
+            <e:Array>
+              <e:Object ranking="1" name="待定" avatar="未知地区" wins="0kg"/>
+              <e:Object ranking="2" name="待定" avatar="未知地区" wins="0kg"/>
+              <e:Object ranking="3" name="待定" avatar="未知地区" wins="0kg"/>
+              <e:Object ranking="4" name="待定" avatar="未知地区" wins="0kg"/>
+              <e:Object ranking="5" name="待定" avatar="未知地区" wins="0kg"/>
+              <e:Object ranking="6" name="待定" avatar="未知地区" wins="0kg"/>
+              <e:Object ranking="7" name="待定" avatar="未知地区" wins="0kg"/>
+              <e:Object ranking="8" name="待定" avatar="未知地区" wins="0kg"/>
+              <e:Object ranking="9" name="待定" avatar="未知地区" wins="0kg"/>
+              <e:Object ranking="10" name="待定" avatar="未知地区" wins="0kg"/>
+            </e:Array>
+          </e:ArrayCollection>
+        </e:List>
+      </e:Scroller>
+    </e:Group>
+  </e:ViewStack>
+</e:Group>
 </e:Skin>

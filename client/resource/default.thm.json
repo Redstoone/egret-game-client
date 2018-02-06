@@ -2,11 +2,11 @@
 	"skins": {},
 	"autoGenerateExmlsList": true,
 	"exmls": [
+		"resource/eui_skins/scene/IndexSkin.exml",
+		"resource/eui_skins/scene/LoginSkin.exml",
 		"resource/eui_skins/component/AlertSkin.exml",
 		"resource/eui_skins/component/RankingItemSkin.exml",
-		"resource/eui_skins/component/RankingSkin.exml",
-		"resource/eui_skins/scene/IndexSkin.exml",
-		"resource/eui_skins/scene/LoginSkin.exml"
+		"resource/eui_skins/component/RankingSkin.exml"
 	],
 	"path": "resource/default.thm.json"
 }

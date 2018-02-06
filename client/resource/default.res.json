@@ -2,7 +2,7 @@
 	"groups": [
 		{
 			"name": "preload",
-			"keys": "ranking_0_png,ranking_1_png,ranking_2_png,ranking_3_png,ranking_4_png,ranking_5_png,ranking_6_png,ranking_7_png,ranking_8_png,ranking_9_png,ranking_btn_active_png,ranking_bg_png,ranking_nav_bar_png,ranking_user_bg_png,ranking_item_bg_png,ranking_dou_png,ranking_dou_active_png,ranking_ping_png,ranking_ping_active_png,ranking_no1_png,ranking_no2_png,ranking_no3_png,ranking_no_bg_png"
+			"keys": "ranking_0_png,ranking_1_png,ranking_2_png,ranking_3_png,ranking_4_png,ranking_5_png,ranking_6_png,ranking_7_png,ranking_8_png,ranking_9_png,ranking_btn_active_png,ranking_bg_png,ranking_nav_bar_png,ranking_user_bg_png,ranking_item_bg_png,ranking_dou_png,ranking_dou_active_png,ranking_ping_png,ranking_ping_active_png,ranking_no1_png,ranking_no2_png,ranking_no3_png,ranking_no_bg_png,add_png,hall_bg_png,menu_bg_png,match_dou_png,match_create_png,match_add_png,match_ping_png,munu_welfare_png,menu_friends_png,menu_kefu_png,menu_record_png,menu_mall_png,notice_bg_png,gold_png,gold_bg_png,role_png,info_bg_png,user_border_png"
 		}
 	],
 	"resources": [
@@ -120,6 +120,96 @@
 			"name": "ranking_no_bg_png",
 			"type": "image",
 			"url": "assets/ranking/ranking_no_bg.png"
+		},
+		{
+			"name": "add_png",
+			"type": "image",
+			"url": "assets/hall/add.png"
+		},
+		{
+			"name": "hall_bg_png",
+			"type": "image",
+			"url": "assets/hall/hall_bg.png"
+		},
+		{
+			"name": "menu_bg_png",
+			"type": "image",
+			"url": "assets/hall/menu_bg.png"
+		},
+		{
+			"name": "match_dou_png",
+			"type": "image",
+			"url": "assets/hall/match_dou.png"
+		},
+		{
+			"name": "match_create_png",
+			"type": "image",
+			"url": "assets/hall/match_create.png"
+		},
+		{
+			"name": "match_add_png",
+			"type": "image",
+			"url": "assets/hall/match_add.png"
+		},
+		{
+			"name": "match_ping_png",
+			"type": "image",
+			"url": "assets/hall/match_ping.png"
+		},
+		{
+			"name": "munu_welfare_png",
+			"type": "image",
+			"url": "assets/hall/munu_welfare.png"
+		},
+		{
+			"name": "menu_friends_png",
+			"type": "image",
+			"url": "assets/hall/menu_friends.png"
+		},
+		{
+			"name": "menu_kefu_png",
+			"type": "image",
+			"url": "assets/hall/menu_kefu.png"
+		},
+		{
+			"name": "menu_record_png",
+			"type": "image",
+			"url": "assets/hall/menu_record.png"
+		},
+		{
+			"name": "menu_mall_png",
+			"type": "image",
+			"url": "assets/hall/menu_mall.png"
+		},
+		{
+			"name": "notice_bg_png",
+			"type": "image",
+			"url": "assets/hall/notice_bg.png"
+		},
+		{
+			"name": "gold_png",
+			"type": "image",
+			"url": "assets/hall/gold.png"
+		},
+		{
+			"name": "gold_bg_png",
+			"type": "image",
+			"url": "assets/hall/gold_bg.png"
+		},
+		{
+			"name": "role_png",
+			"type": "image",
+			"url": "assets/hall/role.png"
+		},
+		{
+			"name": "info_bg_png",
+			"type": "image",
+			"url": "assets/hall/info_bg.png"
+		},
+		{
+			"name": "user_border_png",
+			"type": "image",
+			"url": "assets/hall/user_border.png"
 		}
 	]
 }

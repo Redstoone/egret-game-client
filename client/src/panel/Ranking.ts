@@ -24,10 +24,9 @@ class Ranking extends BaseComponent {
 	private onChange(e:eui.UIEvent){
     let radioGroup:eui.RadioButtonGroup = e.target;
 		this.currIndex = radioGroup.selectedValue
-		console.log('onchange')
 
 		var tw = egret.Tween.get(this.tabActive);
-		tw.to({ x: this.currIndex * 170.5 + 13 }, 300);
+		tw.to({ x: this.currIndex * 170.5 + 13 }, 200);
 
 		this.viewStack.selectedIndex = this.currIndex;
 	}
