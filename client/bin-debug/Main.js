@@ -195,10 +195,10 @@ var Main = (function (_super) {
         console.log('init');
         Ranking.show();
         //init network
-        this.net = new Network('http://localhost', 3101);
-        this.net.send('Room', '30215', { msg: "hello egret" });
-        this.net.setConnectHandler(this.onServerConnected, this);
-        this.net.setCloseHandler(this.onServerClosed, this);
+        // this.net = new Network('http://localhost', 3101);
+        // this.net.send('Room', '30215', { msg: "hello egret" })
+        // this.net.setConnectHandler(this.onServerConnected, this);
+        // this.net.setCloseHandler(this.onServerClosed, this);
     };
     Main.prototype.onServerConnected = function () {
         this.net.bind("Index.login", this.onLogin, this);
