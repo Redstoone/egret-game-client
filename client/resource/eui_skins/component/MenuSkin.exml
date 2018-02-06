@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="MenuSkin" width="1314" height="116" xmlns:e="http://ns.egret.com/eui">
-  <e:Image height="100%" width="100%" x="0" y="0" source="menu_bg_png"/>
+<e:Skin class="MenuSkin" width="1314" height="106" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<w:Config id="1616b44087f"/>
+  <e:Image height="100%" width="100%" source="menu_bg_png" horizontalCenter="0" bottom="0"/>
 
   <e:Group id="menuGroup">
-    <e:Button x="0" y="10" width="262" height="90">
+    <e:Button x="0" y="15" width="262" height="90">
       <e:skinName>
         <e:Skin states="up,down,disabled">
           <e:Image width="80" height="86" source="menu_record_png" horizontalCenter="0" verticalCenter="0"/>

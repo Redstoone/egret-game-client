@@ -78,6 +78,7 @@ var Main = (function (_super) {
         _this.alertView = null;
         _this.rankingView = null;
         _this.indexView = null;
+        _this.matchView = null;
         Main.instance = _this;
         return _this;
     }
@@ -193,12 +194,13 @@ var Main = (function (_super) {
         console.log('init secne');
         this.indexView = new IndexSecne();
         this.rankingView = new Ranking();
+        this.matchView = new Match();
         //init network
         // this.net = new Network('http://192.168.31.160:9090/msg1', 'token=1234b&fot=111');
-        this.net = new Network('http://192.168.31.110:3101/msg1', 'token=1234b&fot=111');
-        this.net.send('Room', '30215', { msg: "hello egret" });
-        this.net.setConnectHandler(this.onServerConnected, this);
-        this.net.setCloseHandler(this.onServerClosed, this);
+        // this.net = new Network('http://192.168.31.110:3101/msg1', 'token=1234b&fot=111');
+        // this.net.send('Room', '30215', { msg: "hello egret" })
+        // this.net.setConnectHandler(this.onServerConnected, this);
+        // this.net.setCloseHandler(this.onServerClosed, this);
     };
     Main.prototype.onServerConnected = function () {
         this.net.bind("Index.login", this.onLogin, this);
@@ -226,4 +228,3 @@ var Main = (function (_super) {
     return Main;
 }(eui.UILayer));
 __reflect(Main.prototype, "Main");
-//# sourceMappingURL=Main.js.map

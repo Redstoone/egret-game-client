@@ -32,4 +32,3 @@ var BaseComponent = (function (_super) {
     return BaseComponent;
 }(eui.Component));
 __reflect(BaseComponent.prototype, "BaseComponent");
-//# sourceMappingURL=BaseComponent.js.map

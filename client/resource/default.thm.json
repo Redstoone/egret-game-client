@@ -1,12 +1,12 @@
 {
-	"skins": {},
-	"autoGenerateExmlsList": true,
-	"exmls": [
-		"resource/eui_skins/component/AlertSkin.exml",
-		"resource/eui_skins/component/MenuSkin.exml",
-		"resource/eui_skins/component/RankingSkin.exml",
-		"resource/eui_skins/scene/IndexSceneSkin.exml",
-		"resource/eui_skins/scene/LoginSkin.exml"
-	],
-	"path": "resource/default.thm.json"
+    "skins": {},
+    "autoGenerateExmlsList": true,
+    "exmls": [
+        "resource/eui_skins/component/AlertSkin.exml",
+        "resource/eui_skins/component/MenuSkin.exml",
+        "resource/eui_skins/component/RankingSkin.exml",
+        "resource/eui_skins/scene/IndexSceneSkin.exml",
+        "resource/eui_skins/scene/LoginSkin.exml"
+    ],
+    "path": "resource/default.thm.json"
 }
