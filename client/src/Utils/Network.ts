@@ -16,7 +16,7 @@ class Network {
 	private cbError: Array<any> = [];
 	private alertView: Alert = null;
 
-	public constructor(_path: string, _queryStr: string) {
+	public constructor(_path: string, _queryStr: string = '') {
 		Network.instance = this
 
 		//初始化alert
@@ -30,7 +30,7 @@ class Network {
 		this.socket.on('connect', this.onSocketConnect);
 		this.socket.on('connect_failed', this.onSocketConnectFailed);
 		//添加收到数据侦听，收到数据会调用此方法
-		this.socket.on('news', (data => {
+		this.socket.on('message', (data => {
 			this.onSocketData(data)
 		}));
 		//添加异常侦听，出现异常会调用此方法

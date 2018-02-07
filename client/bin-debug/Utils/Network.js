@@ -9,6 +9,7 @@ var __reflect = (this && this.__reflect) || function (p, c, t) {
 var _this = null;
 var Network = (function () {
     function Network(_path, _queryStr) {
+        if (_queryStr === void 0) { _queryStr = ''; }
         var _this = this;
         this.handler = {};
         this.cbConnect = [];
@@ -25,7 +26,7 @@ var Network = (function () {
         this.socket.on('connect', this.onSocketConnect);
         this.socket.on('connect_failed', this.onSocketConnectFailed);
         //添加收到数据侦听，收到数据会调用此方法
-        this.socket.on('news', (function (data) {
+        this.socket.on('message', (function (data) {
             _this.onSocketData(data);
         }));
         //添加异常侦听，出现异常会调用此方法

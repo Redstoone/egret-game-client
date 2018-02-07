@@ -196,7 +196,7 @@ var Main = (function (_super) {
         this.rankingView = new Ranking();
         this.matchView = new Match();
         //init network
-        // this.net = new Network('http://192.168.31.160:9090/msg1', 'token=1234b&fot=111');
+        // this.net = new Network('http://192.168.31.160:9092/msg_1');
         // this.net = new Network('http://192.168.31.110:3101/msg1', 'token=1234b&fot=111');
         // this.net.send('Room', '30215', { msg: "hello egret" })
         // this.net.setConnectHandler(this.onServerConnected, this);

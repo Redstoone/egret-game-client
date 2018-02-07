@@ -1,5 +1,7 @@
 declare class AlertSkin extends eui.Skin{
 }
+declare class matchSkin extends eui.Skin{
+}
 declare class MenuSkin extends eui.Skin{
 }
 declare class RankingSkin extends eui.Skin{
