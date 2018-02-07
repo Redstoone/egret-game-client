@@ -79,6 +79,7 @@ var Main = (function (_super) {
         _this.rankingView = null;
         _this.indexView = null;
         _this.matchView = null;
+        _this.menuView = null;
         Main.instance = _this;
         return _this;
     }
@@ -193,8 +194,9 @@ var Main = (function (_super) {
     Main.prototype.initGame = function () {
         console.log('init secne');
         this.indexView = new IndexSecne();
-        this.rankingView = new Ranking();
+        this.menuView = new Menu();
         this.matchView = new Match();
+        this.rankingView = new Ranking();
         //init network
         // this.net = new Network('http://192.168.31.160:9092/msg_1');
         // this.net = new Network('http://192.168.31.110:3101/msg1', 'token=1234b&fot=111');

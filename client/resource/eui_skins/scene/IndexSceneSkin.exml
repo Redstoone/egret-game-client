@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="IndexSceneSkin" width="1334" height="750" xmlns:e="http://ns.egret.com/eui">
-  <e:Image height="100%" width="100%" x="0" y="0" source="hall_bg_png" />
+  <e:Image height="100%" width="100%" x="0" y="0" source="hall_bg_jpg" />
+  <e:Image height="661" width="388" x="499" y="89" source="role_png" />
 </e:Skin>
