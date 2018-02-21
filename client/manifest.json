@@ -10,7 +10,7 @@
 		"libs/modules/socket.io/socket.io.js"
 	],
 	"game": [
-		"bin-debug/utils/BaseComponent.js",
+		"bin-debug/Utils/BaseComponent.js",
 		"bin-debug/panel/Menu.js",
 		"bin-debug/Main.js",
 		"bin-debug/Platform.js",
@@ -23,7 +23,7 @@
 		"bin-debug/scene/IndexSecne.js",
 		"bin-debug/scene/Login.js",
 		"bin-debug/AssetAdapter.js",
-		"bin-debug/utils/Network.js",
-		"bin-debug/utils/Utils.js"
+		"bin-debug/Utils/Network.js",
+		"bin-debug/Utils/Utils.js"
 	]
 }
