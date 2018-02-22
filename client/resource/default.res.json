@@ -2,7 +2,7 @@
 	"groups": [
 		{
 			"name": "preload",
-			"keys": "ranking_0_png,ranking_1_png,ranking_2_png,ranking_3_png,ranking_4_png,ranking_5_png,ranking_6_png,ranking_7_png,ranking_8_png,ranking_9_png,ranking_btn_active_png,ranking_bg_png,ranking_nav_bar_png,ranking_user_bg_png,ranking_item_bg_png,ranking_dou_png,ranking_dou_active_png,ranking_ping_png,ranking_ping_active_png,ranking_no1_png,ranking_no2_png,ranking_no3_png,ranking_no_bg_png,add_png,menu_bg_png,match_dou_png,match_create_png,match_add_png,match_ping_png,menu_friends_png,menu_kefu_png,menu_record_png,menu_mall_png,notice_bg_png,gold_png,gold_bg_png,role_png,info_bg_png,user_border_png,add2_png,gold2_png,gold_bg2_png,info_bg2_png,match_add2_png,match_create2_png,match_dou2_png,match_ping2_png,menu_bg2_png,menu_friends2_png,menu_kefu2_png,menu_mall2_png,menu_record2_png,notice_bg2_png,role2_png,user_border2_png,hall_bg_jpg,menu_welfare_png"
+			"keys": "ranking_0_png,ranking_1_png,ranking_2_png,ranking_3_png,ranking_4_png,ranking_5_png,ranking_6_png,ranking_7_png,ranking_8_png,ranking_9_png,ranking_btn_active_png,ranking_bg_png,ranking_nav_bar_png,ranking_user_bg_png,ranking_item_bg_png,ranking_dou_png,ranking_dou_active_png,ranking_ping_png,ranking_ping_active_png,ranking_no1_png,ranking_no2_png,ranking_no3_png,ranking_no_bg_png,add_png,menu_bg_png,match_dou_png,match_create_png,match_add_png,match_ping_png,menu_friends_png,menu_kefu_png,menu_record_png,menu_mall_png,notice_bg_png,gold_png,gold_bg_png,role_png,info_bg_png,user_border_png,add2_png,gold2_png,gold_bg2_png,info_bg2_png,match_add2_png,match_create2_png,match_dou2_png,match_ping2_png,menu_bg2_png,menu_friends2_png,menu_kefu2_png,menu_mall2_png,menu_record2_png,notice_bg2_png,role2_png,user_border2_png,hall_bg_jpg,menu_welfare_png,ranking_user_jpg"
 		}
 	],
 	"resources": [
@@ -290,6 +290,11 @@
 			"name": "menu_welfare_png",
 			"type": "image",
 			"url": "assets/hall/menu_welfare.png"
+		},
+		{
+			"name": "ranking_user_jpg",
+			"type": "image",
+			"url": "assets/ranking/ranking_user.jpg"
 		}
 	]
 }

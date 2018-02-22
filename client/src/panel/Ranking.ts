@@ -16,18 +16,18 @@ module game {
 		private pingList: eui.List;
 
 		private douListData: Array<any> = [
-			{ ranking: 1, avatar: "", wins: 180, name: "小鱼儿的记忆" },
-			{ ranking: 2, avatar: "", wins: 20, name: "Ambar" },
-			{ ranking: 3, avatar: "", wins: 40, name: "六号宝宝" },
-			{ ranking: 4, avatar: "", wins: 60, name: "小鱼儿的记忆2号" },
-			{ ranking: 5, avatar: "", wins: 20, name: "任任任1234" },
-			{ ranking: 6, avatar: "", wins: 880, name: "nickname6" }
+			{ ranking: 1, avatar: "/resource/assets/ranking/ranking_user.jpg", wins: 180, name: "小鱼儿的记忆" },
+			{ ranking: 2, avatar: "/resource/assets/ranking/ranking_user.jpg", wins: 20, name: "Ambar" },
+			{ ranking: 3, avatar: "/resource/assets/ranking/ranking_user.jpg", wins: 40, name: "六号宝宝" },
+			{ ranking: 4, avatar: "/resource/assets/ranking/ranking_user.jpg", wins: 60, name: "小鱼儿的记忆2号" },
+			{ ranking: 5, avatar: "/resource/assets/ranking/ranking_user.jpg", wins: 20, name: "任任任1234" },
+			{ ranking: 6, avatar: "/resource/assets/ranking/ranking_user.jpg", wins: 880, name: "nickname6" }
 		]; //数据,可动态生成
 
 		private pingListData: Array<any> = [
-			{ ranking: 1, avatar: "", wins: 180, name: "小鱼儿的记忆" },
-			{ ranking: 2, avatar: "", wins: 20, name: "Ambar" },
-			{ ranking: 3, avatar: "", wins: 40, name: "六号宝宝" },
+			{ ranking: 1, avatar: "/resource/assets/ranking/ranking_user.jpg", wins: 180, name: "小鱼儿的记忆" },
+			{ ranking: 2, avatar: "/resource/assets/ranking/ranking_user.jpg", wins: 20, name: "Ambar" },
+			{ ranking: 3, avatar: "/resource/assets/ranking/ranking_user.jpg", wins: 40, name: "六号宝宝" },
 		]; //数据,可动态生成
 
 		private douConllection: eui.ArrayCollection = new eui.ArrayCollection();

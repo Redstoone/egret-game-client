@@ -15,6 +15,14 @@ module game {
 		public constructor() {
 			super();
 			this.skinName = "RankingItemSkin";
+
+			// var circle: egret.Shape = new egret.Shape();
+			// circle.graphics.beginFill(0x0000ff);
+			// circle.graphics.drawCircle(239 + 78, 236 + 78, 78);
+			// circle.graphics.endFill();
+			// this.addChild(circle);
+
+			// this.avatar_img.mask = circle;
 		}
 
 		public dataChanged(): void {
