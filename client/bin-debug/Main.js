@@ -80,6 +80,8 @@ var Main = (function (_super) {
         _this.indexView = null;
         _this.matchView = null;
         _this.menuView = null;
+        _this.notifyView = null;
+        _this.userInfoView = null;
         Main.instance = _this;
         return _this;
     }
@@ -194,9 +196,12 @@ var Main = (function (_super) {
     Main.prototype.initGame = function () {
         console.log('init secne');
         this.indexView = new IndexSecne();
+        this.notifyView = new Notify(384, 24, 653, 45, 5, 0, 3000);
+        this.userInfoView = new UserInfo();
         this.menuView = new Menu();
         this.matchView = new Match();
         this.rankingView = new game.Ranking();
+        this.notifyView.addText("哈哈哈哈哈哈");
         //init network
         // this.net = new Network('http://192.168.31.160:9092/msg_1');
         // this.net = new Network('http://192.168.31.110:3101/msg1', 'token=1234b&fot=111');

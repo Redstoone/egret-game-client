@@ -37,6 +37,8 @@ class Main extends eui.UILayer {
 	private indexView: IndexSecne = null;
 	private matchView: Match = null;
 	private menuView: Menu = null;
+	private notifyView: Notify = null;
+	private userInfoView: UserInfo = null;
 
 	public static getInstance() {
 		return Main.instance;
@@ -138,9 +140,13 @@ class Main extends eui.UILayer {
 	protected initGame(): void {
 		console.log('init secne')
 		this.indexView = new IndexSecne();
+		this.notifyView = new Notify(384, 24, 653, 45, 5, 0, 3000);
+		this.userInfoView = new UserInfo();
 		this.menuView = new Menu();
 		this.matchView = new Match();
 		this.rankingView = new game.Ranking();
+
+		this.notifyView.addText("哈哈哈哈哈哈");
 		
 		//init network
 		// this.net = new Network('http://192.168.31.160:9092/msg_1');

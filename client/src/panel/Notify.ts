@@ -1,6 +1,7 @@
-class Notify extends egret.DisplayObjectContainer {
-	private _running: Array<egret.TextField> = [];
-	private _waiting: Array<egret.TextField> = [];
+class Notify extends BaseComponent {
+	private static instance: Notify;
+	private _running: Array<eui.Label> = [];
+	private _waiting: Array<eui.Label> = [];
 
 	private _delayTime: number;
 	private _timer: egret.Timer;
@@ -8,8 +9,13 @@ class Notify extends egret.DisplayObjectContainer {
 	private _bias: number = 0;
 	private _waitFlag: boolean = false;
 
+	private notifyTxt: eui.Label;
+
 	public constructor(x: number, y: number, width: number, height: number, space: number, bias: number, delay: number) {
 		super();
+		Notify.instance = this;
+		this.load("component/NotifySkin.exml");
+
 		this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
 
 		this._delayTime = delay;
@@ -22,6 +28,11 @@ class Notify extends egret.DisplayObjectContainer {
 
 		this._space = space;
 		this._bias = bias;
+
+		var inst = Notify.instance;
+		inst.x = x;
+		inst.y = y;
+		Main.getInstance().addChild(inst);
 	}
 
 	private onAddToStage() {
@@ -29,16 +40,10 @@ class Notify extends egret.DisplayObjectContainer {
 		this._timer.start();
 	}
 
-	public addText(text: string, size: number = 50, color: number = 0xffffff): boolean {
-		var newField: egret.TextField = new egret.TextField;
-		newField.text = text;
-		newField.textColor = color;
-		newField.size = size;
-		// newField.bold = true;
-		newField.visible = false;
+	public addText(txt: string, size: number = 50, color: number = 0xffffff): boolean {
+		this.notifyTxt.text = txt;
 
-		this.addChild(newField);
-		this._waiting.push(newField);
+		this._waiting.push(this.notifyTxt);
 		return true;
 	}
 
@@ -53,7 +58,7 @@ class Notify extends egret.DisplayObjectContainer {
 			return;
 
 		//head
-		var head: egret.TextField = this._running[0];
+		var head: eui.Label = this._running[0];
 		if (head.x + head.width <= 0) {
 			this.removeChild(this._running.shift());
 		}
@@ -61,12 +66,12 @@ class Notify extends egret.DisplayObjectContainer {
 		if (this._running.length > 0) {
 			//body
 			for (var i: number = 0; i < this._running.length; ++i) {
-				var current: egret.TextField = this._running[i];
+				var current: eui.Label = this._running[i];
 				current.x -= this._bias;
 			}
 
 			//tail
-			var tail: egret.TextField = this._running[this._running.length - 1];
+			var tail: eui.Label = this._running[this._running.length - 1];
 			this._waitFlag = (tail.x + tail.width <= this.width) ? true : false;
 		}
 	}
@@ -78,7 +83,7 @@ class Notify extends egret.DisplayObjectContainer {
 		if (this._waitFlag == false)
 			return;
 
-		var next: egret.TextField = this._waiting.shift();
+		var next: eui.Label = this._waiting.shift();
 		next.x = this.width + this._space;
 		next.visible = true;
 		this._running.push(next);
