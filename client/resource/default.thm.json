@@ -2,14 +2,15 @@
 	"skins": {},
 	"autoGenerateExmlsList": true,
 	"exmls": [
-		"resource/eui_skins/component/AlertSkin.exml",
-		"resource/eui_skins/component/MatchSkin.exml",
-		"resource/eui_skins/component/MenuSkin.exml",
-		"resource/eui_skins/component/NotifySkin.exml",
-		"resource/eui_skins/component/RankingSkin.exml",
-		"resource/eui_skins/component/UserInfoSkin.exml",
-		"resource/eui_skins/scene/IndexSceneSkin.exml",
-		"resource/eui_skins/scene/LoginSkin.exml"
+		"resource/component/AlertSkin.exml",
+		"resource/component/MatchSkin.exml",
+		"resource/component/MenuSkin.exml",
+		"resource/component/NotifySkin.exml",
+		"resource/component/RankingItemSkin.exml",
+		"resource/component/RankingSkin.exml",
+		"resource/component/UserInfoSkin.exml",
+		"resource/scene/IndexSceneSkin.exml",
+		"resource/scene/LoginSkin.exml"
 	],
 	"path": "resource/default.thm.json"
 }

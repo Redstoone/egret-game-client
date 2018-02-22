@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="RankingItemSkin" width="358" height="106" xmlns:e="http://ns.egret.com/eui">
+  <e:Image width="345" height="100" y="5" source="ranking_item_bg_png" />
+  <e:Image width="86" height="86" left="57" source="ranking_user_bg_png" verticalCenter="0" />
+  <e:Label size="30" id="ranking_lab" left="20" textColor="0x000000" verticalCenter="0" />
+  <e:Image id="avatar_img" width="80" height="80" left="60" verticalCenter="0" />
+  <e:Label size="26" id="name_lab" left="152" top="20" textColor="0x74738C" />
+  <e:Label size="20" id="wins_lab" left="152" bottom="20" textColor="0x546388" />
+</e:Skin>

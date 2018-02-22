@@ -196,7 +196,7 @@ var Main = (function (_super) {
         this.indexView = new IndexSecne();
         this.menuView = new Menu();
         this.matchView = new Match();
-        this.rankingView = new Ranking();
+        this.rankingView = new game.Ranking();
         //init network
         // this.net = new Network('http://192.168.31.160:9092/msg_1');
         // this.net = new Network('http://192.168.31.110:3101/msg1', 'token=1234b&fot=111');

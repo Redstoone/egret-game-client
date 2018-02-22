@@ -20,7 +20,7 @@ var BaseComponent = (function (_super) {
     }
     BaseComponent.prototype.load = function (skinName) {
         this.addEventListener(eui.UIEvent.COMPLETE, this.onUIComplete, this);
-        this.skinName = "resource/eui_skins/" + skinName;
+        this.skinName = "resource/" + skinName;
     };
     BaseComponent.prototype.onUIComplete = function (ev) {
         this.removeEventListener(eui.UIEvent.COMPLETE, this.onUIComplete, this);

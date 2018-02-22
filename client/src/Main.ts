@@ -33,7 +33,7 @@ class Main extends eui.UILayer {
 	private static instance: Main;
 	private loadingView: LoadingUI;
 	private alertView: Alert = null;
-	private rankingView: Ranking = null;
+	private rankingView: game.Ranking = null;
 	private indexView: IndexSecne = null;
 	private matchView: Match = null;
 	private menuView: Menu = null;
@@ -140,7 +140,7 @@ class Main extends eui.UILayer {
 		this.indexView = new IndexSecne();
 		this.menuView = new Menu();
 		this.matchView = new Match();
-		this.rankingView = new Ranking();
+		this.rankingView = new game.Ranking();
 		
 		//init network
 		// this.net = new Network('http://192.168.31.160:9092/msg_1');
