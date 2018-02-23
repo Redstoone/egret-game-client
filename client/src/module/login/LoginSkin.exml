@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="LoginSkin" width="1334" height="750" xmlns:e="http://ns.egret.com/eui">
+	<e:Label text="Login" x="334" y="234"/>
+</e:Skin>

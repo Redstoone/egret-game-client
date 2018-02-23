@@ -3,7 +3,7 @@
  * @author redstoone
  *
  */
-var _this = null
+let _this = null
 class Network {
 	private static instance: Network;
 	private socket;
@@ -75,7 +75,7 @@ class Network {
 	}
 
 	public send(c: string, m: string, data: any) {
-		var obj: Object = {
+		let obj: Object = {
 			"c": c,
 			"m": m,
 			"data": data
@@ -90,8 +90,8 @@ class Network {
 
 	private onSocketConnect(): void {
 		if (Network.instance.cbConnect.length > 0) {
-			var obj: Object = Network.instance.cbConnect[0];
-			var func: Function = Network.instance.cbConnect[1];
+			let obj: Object = Network.instance.cbConnect[0];
+			let func: Function = Network.instance.cbConnect[1];
 			func.call(obj);
 		}
 		Network.instance.state = 1;
@@ -108,8 +108,8 @@ class Network {
 		// console.log("socket.io closed");
 		Alert.show("socket.io closed", false)
 		if (Network.instance.cbClose.length > 0) {
-			var obj: Object = Network.instance.cbClose[0];
-			var func: Function = Network.instance.cbClose[1];
+			let obj: Object = Network.instance.cbClose[0];
+			let func: Function = Network.instance.cbClose[1];
 			func.call(obj);
 		}
 	}
@@ -122,8 +122,8 @@ class Network {
 	private onSocketReconnect(): void {
 		console.log("socket.io reconnected");
 		if (Network.instance.cbConnect.length > 0) {
-			var obj: Object = Network.instance.cbClose[0];
-			var func: Function = Network.instance.cbClose[1];
+			let obj: Object = Network.instance.cbClose[0];
+			let func: Function = Network.instance.cbClose[1];
 			func.call(obj);
 		}
 	}
@@ -137,8 +137,8 @@ class Network {
 		console.log("socket.io error");
 		console.log(error)
 		if (Network.instance.cbError.length > 0) {
-			var obj: Object = Network.instance.cbError[0];
-			var func: Function = Network.instance.cbError[1];
+			let obj: Object = Network.instance.cbError[0];
+			let func: Function = Network.instance.cbError[1];
 			func.call(obj);
 		}
 	}
@@ -146,18 +146,18 @@ class Network {
 	private onSocketData(data): void {
 		console.log(data)
 		console.log("recv -->", data);
-		var packet: Object = JSON.parse(data);
+		let packet: Object = JSON.parse(data);
 		this.dispatch(packet);
 	}
 
 	private dispatch(msg: Object) {
 		//data handler
-		var error: number = msg["err"];
-		var name: string = error ? "Error" : msg["c"] + "." + msg["m"];
-		var cb: Array<any> = this.handler[name];
+		let error: number = msg["err"];
+		let name: string = error ? "Error" : msg["c"] + "." + msg["m"];
+		let cb: Array<any> = this.handler[name];
 		if (cb) {
-			var obj: Object = cb[0];
-			var func: Function = cb[1];
+			let obj: Object = cb[0];
+			let func: Function = cb[1];
 			func.call(obj, msg["data"]);
 		} else {
 			console.log("not found handler --> " + name)

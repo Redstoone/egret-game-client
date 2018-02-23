@@ -28,25 +28,13 @@
 //////////////////////////////////////////////////////////////////////////////////////
 
 class Main extends eui.UILayer {
-	public net: Network;
-
-	private static instance: Main;
-	private loadingView: LoadingUI;
-	private alertView: Alert = null;
-	private rankingView: game.Ranking = null;
-	private indexView: IndexSecne = null;
-	private matchView: Match = null;
-	private menuView: Menu = null;
-	private notifyView: Notify = null;
-	private userInfoView: UserInfo = null;
+	private static instance: Main = null;
 
 	public static getInstance() {
+		if (Main.instance == null) {
+			Main.instance = new Main();
+		}
 		return Main.instance;
-	}
-
-	public constructor() {
-		super();
-		Main.instance = this;
 	}
 
 	protected createChildren(): void {
@@ -64,11 +52,6 @@ class Main extends eui.UILayer {
 			egret.ticker.resume();
 		}
 
-		//Config loading process interface
-		//设置加载进度界面
-		// this.loadingView = new LoadingUI();
-		// this.addChild(this.loadingView);
-
 		//inject the custom material parser
 		//注入自定义的素材解析器
 		let assetAdapter = new AssetAdapter();
@@ -83,11 +66,10 @@ class Main extends eui.UILayer {
 
 	private async runGame() {
 		await this.loadResource()
-		// this.createGameScene();
+		this.createGameScene();
 		await platform.login();
 		const userInfo = await platform.getUserInfo();
 		console.log(userInfo);
-
 	}
 
 	private async loadResource() {
@@ -109,27 +91,11 @@ class Main extends eui.UILayer {
 			// load skin theme configuration file, you can manually modify the file. And replace the default skin.
 			//加载皮肤主题配置文件,可以手动修改这个文件。替换默认皮肤。
 			let theme = new eui.Theme("resource/default.thm.json", this.stage);
-			theme.addEventListener(eui.UIEvent.COMPLETE, this.onThemeLoadComplete, this);
+			theme.addEventListener(eui.UIEvent.COMPLETE, () => {
+				resolve();
+			}, this);
+
 		})
-	}
-
-	/**
-     * 主题文件加载完成,开始预加载
-     * Loading of theme configuration file is complete, start to pre-load the 
-     */
-	private onThemeLoadComplete(): void {
-		//初始化alert
-		this.alertView = new Alert();
-		this.alertView.horizontalCenter = 0;
-		this.alertView.verticalCenter = 0;
-
-
-		// Alert.show("正在加载资源", false)
-
-		//加载资源
-		// this.loadingView.setLoadingText("正在加载资源");
-		// this.loadRes("preload");
-		this.initGame()
 	}
 
 	private textfield: egret.TextField;
@@ -137,52 +103,8 @@ class Main extends eui.UILayer {
 	 * 创建场景界面
 	 * Create scene interface
 	 */
-	protected initGame(): void {
-		console.log('init secne')
-		this.indexView = new IndexSecne();
-		this.notifyView = new Notify(384, 24, 653, 45, 5, 0, 3000);
-		this.userInfoView = new UserInfo();
-		this.menuView = new Menu();
-		this.matchView = new Match();
-		this.rankingView = new game.Ranking();
-
-		this.notifyView.addText("哈哈哈哈哈哈");
-		
-		//init network
-		// this.net = new Network('http://192.168.31.160:9092/msg_1');
-		// this.net = new Network('http://192.168.31.110:3101/msg1', 'token=1234b&fot=111');
-		// this.net.send('Room', '30215', { msg: "hello egret" })
-
-		// this.net.setConnectHandler(this.onServerConnected, this);
-		// this.net.setCloseHandler(this.onServerClosed, this);
+	protected createGameScene(): void {
+		Director.getInstance().initWithMain(this);
+		SceneMgr.gotoLogoin();
 	}
-
-	private onServerConnected() {
-		this.net.bind("Index.login", this.onLogin, this);
-		this.net.bind("Error", this.onError, this);
-
-		//发送登录
-		// this.loadingView.setLoadingText("正在登录");
-	}
-
-	private onServerClosed() {
-		console.log(this.net.isConnected())
-		if (this.net.isConnected()) {
-			Alert.show("与服务器断开连接", false, () => {
-				// window.location.reload();
-			}, this);
-		} else {
-			Alert.show("无法连接服务器", false);
-		}
-	}
-
-	private onError(errstr: any) {
-		Alert.show(errstr);
-	}
-
-	private onLogin(data: any) {
-
-		// this.createGame();
-	}
-
 }

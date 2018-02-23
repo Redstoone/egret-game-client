@@ -74,18 +74,12 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 var Main = (function (_super) {
     __extends(Main, _super);
     function Main() {
-        var _this = _super.call(this) || this;
-        _this.alertView = null;
-        _this.rankingView = null;
-        _this.indexView = null;
-        _this.matchView = null;
-        _this.menuView = null;
-        _this.notifyView = null;
-        _this.userInfoView = null;
-        Main.instance = _this;
-        return _this;
+        return _super !== null && _super.apply(this, arguments) || this;
     }
     Main.getInstance = function () {
+        if (Main.instance == null) {
+            Main.instance = new Main();
+        }
         return Main.instance;
     };
     Main.prototype.createChildren = function () {
@@ -99,10 +93,6 @@ var Main = (function (_super) {
         egret.lifecycle.onResume = function () {
             egret.ticker.resume();
         };
-        //Config loading process interface
-        //设置加载进度界面
-        // this.loadingView = new LoadingUI();
-        // this.addChild(this.loadingView);
         //inject the custom material parser
         //注入自定义的素材解析器
         var assetAdapter = new AssetAdapter();
@@ -117,15 +107,12 @@ var Main = (function (_super) {
             var userInfo;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.loadResource()
-                        // this.createGameScene();
-                    ];
+                    case 0: return [4 /*yield*/, this.loadResource()];
                     case 1:
                         _a.sent();
-                        // this.createGameScene();
+                        this.createGameScene();
                         return [4 /*yield*/, platform.login()];
                     case 2:
-                        // this.createGameScene();
                         _a.sent();
                         return [4 /*yield*/, platform.getUserInfo()];
                     case 3:
@@ -171,67 +158,20 @@ var Main = (function (_super) {
             // load skin theme configuration file, you can manually modify the file. And replace the default skin.
             //加载皮肤主题配置文件,可以手动修改这个文件。替换默认皮肤。
             var theme = new eui.Theme("resource/default.thm.json", _this.stage);
-            theme.addEventListener(eui.UIEvent.COMPLETE, _this.onThemeLoadComplete, _this);
+            theme.addEventListener(eui.UIEvent.COMPLETE, function () {
+                resolve();
+            }, _this);
         });
-    };
-    /**
-     * 主题文件加载完成,开始预加载
-     * Loading of theme configuration file is complete, start to pre-load the
-     */
-    Main.prototype.onThemeLoadComplete = function () {
-        //初始化alert
-        this.alertView = new Alert();
-        this.alertView.horizontalCenter = 0;
-        this.alertView.verticalCenter = 0;
-        // Alert.show("正在加载资源", false)
-        //加载资源
-        // this.loadingView.setLoadingText("正在加载资源");
-        // this.loadRes("preload");
-        this.initGame();
     };
     /**
      * 创建场景界面
      * Create scene interface
      */
-    Main.prototype.initGame = function () {
-        console.log('init secne');
-        this.indexView = new IndexSecne();
-        this.notifyView = new Notify(384, 24, 653, 45, 5, 0, 3000);
-        this.userInfoView = new UserInfo();
-        this.menuView = new Menu();
-        this.matchView = new Match();
-        this.rankingView = new game.Ranking();
-        this.notifyView.addText("哈哈哈哈哈哈");
-        //init network
-        // this.net = new Network('http://192.168.31.160:9092/msg_1');
-        // this.net = new Network('http://192.168.31.110:3101/msg1', 'token=1234b&fot=111');
-        // this.net.send('Room', '30215', { msg: "hello egret" })
-        // this.net.setConnectHandler(this.onServerConnected, this);
-        // this.net.setCloseHandler(this.onServerClosed, this);
+    Main.prototype.createGameScene = function () {
+        Director.getInstance().initWithMain(this);
+        SceneMgr.gotoLogoin();
     };
-    Main.prototype.onServerConnected = function () {
-        this.net.bind("Index.login", this.onLogin, this);
-        this.net.bind("Error", this.onError, this);
-        //发送登录
-        // this.loadingView.setLoadingText("正在登录");
-    };
-    Main.prototype.onServerClosed = function () {
-        console.log(this.net.isConnected());
-        if (this.net.isConnected()) {
-            Alert.show("与服务器断开连接", false, function () {
-                // window.location.reload();
-            }, this);
-        }
-        else {
-            Alert.show("无法连接服务器", false);
-        }
-    };
-    Main.prototype.onError = function (errstr) {
-        Alert.show(errstr);
-    };
-    Main.prototype.onLogin = function (data) {
-        // this.createGame();
-    };
+    Main.instance = null;
     return Main;
 }(eui.UILayer));
 __reflect(Main.prototype, "Main");
